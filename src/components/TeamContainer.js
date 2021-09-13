@@ -10,6 +10,8 @@ const TeamContainer = () => {
                         teamID= {team.idTeam}
                         teamBadge={team.strTeamBadge}
                         teamName={team.strTeam}
+                        teamStadium={team.strStadium}
+                        teamJersey={team.strTeamJersey}
                     />
                 )
             })}
