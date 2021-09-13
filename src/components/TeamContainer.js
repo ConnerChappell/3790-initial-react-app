@@ -1,4 +1,5 @@
 import { teams } from "../data/teams";
+import TeamCard from "./TeamCard";
 
 const TeamContainer = () => {
     return (
