@@ -1,16 +1,36 @@
+/* App Styles */
 .App {
   background-color: #00ff88;
   height: 100%;
 }
+.App header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+  color: #3d195b;
+  font-weight: bold;
+  font-size: 36px;
+  height: 100px;
+  background-color: #ff2882;
+}
+.App .logo {
+  height: 50px;
+  width: auto;
+  margin-right: 10px;
+}
 
+/* Team Container styles */
 .team-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   margin: 0 20px;
+  padding: 40px 0;
 }
 
+/* Card Styles */
 .card {
   position: relative;
   display: flex;
@@ -22,7 +42,6 @@
   width: 200px;
   height: 400px;
   text-align: center;
-  /* border: 1px solid #ff2882; */
   /* background-color: #963cff; */
 }
 .card .badge {
