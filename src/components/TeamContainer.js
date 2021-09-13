@@ -1,6 +1,6 @@
 import { teams } from "../data/teams";
 
-const TeamsContainer = () => {
+const TeamContainer = () => {
     return (
         <div className="senator-container">
 
@@ -8,4 +8,4 @@ const TeamsContainer = () => {
     )
 }
 
-export default TeamsContainer
+export default TeamContainer

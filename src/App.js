@@ -1,10 +1,10 @@
 import './App.css'
-import TeamsContainer from './components/TeamsContainer'
+import TeamContainer from './components/TeamContainer'
 
 const App = () => {
   return (
     <div className="App">
-      <TeamsContainer />
+      <TeamContainer />
     </div>
   );
 }
