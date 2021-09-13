@@ -1,4 +1,30 @@
 .App {
-  text-align: center;
   background-color: #00ff88;
+  height: 100%;
+}
+
+.team-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 20px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  padding: 50px;
+  margin: 20px;
+  width: 200px;
+  height: 300px;
+  text-align: center;
+  /* border: 1px solid #ff2882; */
+  /* background-color: #963cff; */
+}
+.card img {
+  width: 125px;
+  height: auto;
 }
