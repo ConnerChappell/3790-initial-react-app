@@ -1,25 +1,56 @@
 import '../App.css'
-import Card from '@material-ui/core/Card'
-import CardContent from '@material-ui/core/CardContent'
-import Typography from '@material-ui/core/Typography'
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import Typography from '@mui/material/Typography'
+import CardMedia from '@mui/material/CardMedia'
 
-const TeamCard = (props) => {
-    const { teamID, teamBadge, teamName, teamStadium, teamJersey } = props
+const TeamCard = (team) => {
+    // const { teamID, teamBadge, teamName, teamStadium, teamJersey } = props
+
     return (
-        <Card key={teamID} className="card">
-            <img src={teamBadge} alt="Team Badge" className="badge"/>
+        <Card
+            key={team.idTeam}
+            className="card"
+            sx={{
+                position: 'relative',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'flex-start',
+                textAlign: 'center',
+                p: '20px 50px',
+                m: '20px',
+                width: 200,
+                height: 400,
+            }}>
+            <CardMedia
+                component="img"
+                image={team.strTeamBadge}
+                alt="Team Badge"
+                sx={{
+                    width: 125,
+                    height: 'auto',
+                }}
+            />
             <CardContent>
                 <Typography variant="h4" component="h2">
-                    {teamName}
+                    {team.strTeam}
                 </Typography>
                 <Typography
                     component="p"
-                    color="textSecondary"
-                    className="stadium">
-                    Stadium: {teamStadium}
+                    color="text.secondary"
+                    className="stadium"
+                    sx={{
+                        m: '20px 0',
+                    }}>
+                    Stadium: {team.strStadium}
                 </Typography>
             </CardContent>
-            <img src={teamJersey} alt="Team Jersey" className="jersey"/>
+            <img
+                src={team.strTeamJersey}
+                alt="Team Jersey"
+                className="jersey"
+            />
         </Card>
     )
 }

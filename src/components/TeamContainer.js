@@ -6,12 +6,7 @@ const TeamContainer = () => {
         <div className="team-container">
             {teams.map((team) => {
                 return (
-                    <TeamCard
-                        teamID= {team.idTeam}
-                        teamBadge={team.strTeamBadge}
-                        teamName={team.strTeam}
-                        teamStadium={team.strStadium}
-                        teamJersey={team.strTeamJersey}
+                    <TeamCard {...team}
                     />
                 )
             })}
