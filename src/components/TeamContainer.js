@@ -23,7 +23,28 @@ const TeamContainer = () => {
     const [open, setOpen] = React.useState(false)
     // use state for rendering team info into modal
     const [renderTeamInfo, setRenderTeamInfo] = React.useState([])
+    // use state for adding favorites
+    const [favorites, setFavorites] = React.useState([])
 
+    // Add favorites function
+    const addToFavorites = (team) => {
+        if (!favorites.includes(team.strTeamBadge)) {
+            console.log(`${team.strTeamBadge} was clicked`)
+            // Not a favorite so add it
+            setFavorites((prevState) => {
+                return [...prevState, team.strTeamBadge]
+            })
+        } else {
+            setFavorites(() => {
+                // Duplicate: filter and return new array
+                return favorites.filter((item) => {
+                    return item !== team.strTeamBadge
+                })
+            })
+        }
+    }
+
+    // Modal Functions
     const handleOpen = (team) => {
         setOpen(true)
         setRenderTeamInfo(() => {
@@ -36,11 +57,58 @@ const TeamContainer = () => {
 
     return (
         <div className="team-container">
+            <Box
+                sx={{
+                    width: '81.5%',
+                    height: 'auto',
+                    textAlign: 'center',
+                    bgcolor: 'background.paper',
+                    borderRadius: 1,
+                    boxShadow: 4,
+                    m: '0 20px 20px 20px',
+                }}>
+                <Typography
+                    variant="h4"
+                    component="h2"
+                    sx={{
+                        mx: 'auto',
+                        mt: 2,
+                        mb: 2,
+                    }}>
+                    Favorites
+                </Typography>
+
+                <Box
+                    sx={{
+                        display: 'flex',
+                        flexWrap: 'wrap',
+                        justifyContent: 'center',
+                    }}>
+                    {favorites &&
+                        favorites.map((strTeamBadge) => {
+                            return (
+                                <CardMedia
+                                    component="img"
+                                    image={strTeamBadge}
+                                    alt="Team Badge"
+                                    sx={{
+                                        width: 50,
+                                        height: 'auto',
+                                        mx: 1,
+                                        mb: 2,
+                                    }}
+                                />
+                            )
+                        })}
+                </Box>
+            </Box>
+
             {teams.map((team) => {
                 // Passes down team object as prop and handleOpen function as prop
                 return (
                     <TeamCard
                         key={team.idTeam}
+                        addToFavoritesFunction={addToFavorites}
                         modalFunction={handleOpen}
                         team={{ ...team }}
                     />
@@ -81,7 +149,7 @@ const TeamContainer = () => {
                                         mx: 'auto',
                                     }}
                                 />
-                                
+
                                 <CardMedia
                                     component="img"
                                     image={team.strTeamJersey}

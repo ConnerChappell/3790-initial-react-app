@@ -7,9 +7,18 @@ import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
 import IconButton from '@mui/material/IconButton'
 import InfoIcon from '@mui/icons-material/Info'
+import FavoriteIcon from '@mui/icons-material/Favorite'
 
 const TeamCard = (props) => {
     const [loadTeamInfo, setLoadTeamInfo] = React.useState(false)
+
+    const [favorite, setFavorite] = React.useState(false)
+
+    // Function that handles favorite click
+    const handleFavoriteClick = () => {
+        setFavorite(!favorite)
+        props.addToFavoritesFunction(props.team)
+    }
 
     // Handles modal function prop from parent which opens modal from click event listener
     const handleInfoClick = () => {
@@ -56,15 +65,24 @@ const TeamCard = (props) => {
             </CardContent>
             <CardActions
                 sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
                     p: 0,
                 }}>
                 <IconButton
                     onClick={handleInfoClick}
                     sx={{
-                        mx: 'auto',
-                        my: 0,
+                        m: 0,
                     }}>
                     <InfoIcon />
+                </IconButton>
+                <IconButton
+                    onClick={handleFavoriteClick}
+                    sx={{
+                        m: 0,
+                        color: favorite ? "#F00" : "rgba(0, 0, 0, 0.54)",
+                    }}>
+                    <FavoriteIcon />
                 </IconButton>
             </CardActions>
         </Card>
